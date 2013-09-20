@@ -1,4 +1,6 @@
 # pakman manifest
 
 __file__.html  blank.html.erb
+
+blank.css
 feed-icon-10x10.png
