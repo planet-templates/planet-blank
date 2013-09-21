@@ -26,7 +26,7 @@ To check if the new template got installed, use the `list` command:
 Listing something like:
 
     Installed templates include:
-       blank (~/.pluto/templates/blank/blank.txt)
+       blank (~/.pluto/blank/blank.txt)
 
 Showtime! Let's use the `-t/--template` switch to build a sample Planet Ruby. Example:
 
