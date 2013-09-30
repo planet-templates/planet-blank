@@ -1,0 +1,71 @@
+<html>
+  <head>
+   <meta charset='UTF-8'>
+   <meta name='generator' content='<%= Pluto.banner %>'>
+   <title><%= site.title %></title>
+
+   <link rel='stylesheet' type='text/css' href='blank.two.css'>
+
+  </head>
+  <body>
+    
+<h1>
+  <%= site.title %>
+  Last Update: <%= site.fetched_at %>
+</h1>
+
+<!-- use a table w/ two colums -->
+
+<table>
+  <colgroup>
+    <col width='50%'>
+    <col width='50%'>
+  </colgroup>
+<tr>
+
+<%  Item.latest.limit(24).in_columns(2).each do |items| %>
+
+<td valign='top'>
+  <!-- start new column -->
+
+  <% items.each do |item| %>
+
+
+<div class='item'>
+<h3>
+  <a href='<%= item.feed.url %>'><%= item.feed.title %></a>
+      <span class='item-published'> - 
+          <!-- fix/todo: show year if not current year
+             e.g. use "%b %d, '%y"
+          -->
+        <%= item.published_at.strftime("%b %d") %>
+      </span>
+</h3>
+
+<table>
+   <tr>
+     <td valign='top'>
+       <span class='item-title'>
+           <a href='<%= item.url %>'>
+              <%= item.title %>
+           </a>
+       </span>
+       
+       <%= item.summary ? textify( item.summary ) : '-/-' %>
+       
+       <span class='item-time-ago-in-words'><%= time_ago_in_words( item.published_at ) %></span>
+     </td>
+    </tr>
+</table>
+</div>
+
+
+  <% end %><!-- each item (inside column) -->
+ </td>
+
+<% end %><!-- each column-->
+  </tr>
+</table>
+
+</body>
+</html>
