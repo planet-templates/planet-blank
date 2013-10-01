@@ -1,7 +1,7 @@
 <html>
   <head>
    <meta charset='UTF-8'>
-   <meta name='generator' content='<%= Pluto.banner %>'>
+   <meta name='generator' content='<%= Pluto.generator %>'>
    <title><%= site.title %></title>
 
    <link rel='stylesheet' type='text/css' href='blank.two.css'>
@@ -11,7 +11,7 @@
     
 <h1>
   <%= site.title %>
-  Last Update: <%= site.fetched_at %>
+  Update: <%= site.fetched_at %>
 </h1>
 
 <!-- use a table w/ two colums -->
@@ -33,7 +33,7 @@
 
 <div class='item'>
 <h3>
-  <a href='<%= item.feed.url %>'><%= item.feed.title %></a>
+  <%= link_to item.feed.title, item.feed.url %>
       <span class='item-published'> - 
           <!-- fix/todo: show year if not current year
              e.g. use "%b %d, '%y"
@@ -46,9 +46,7 @@
    <tr>
      <td valign='top'>
        <span class='item-title'>
-           <a href='<%= item.url %>'>
-              <%= item.title %>
-           </a>
+          <%= link_to item.title, item.url %>
        </span>
        
        <%= item.summary ? textify( item.summary ) : '-/-' %>

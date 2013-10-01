@@ -2,10 +2,11 @@
 <html>
 <head>
   <meta charset='UTF-8'>
-  <meta name='generator' content='<%= Pluto.banner %>'>
+  <meta name='generator' content='<%= Pluto.generator %>'>
 
   <title><%= site.title %></title>
 
+  <%# stylesheet_link_tag 'blank' %>
   <link rel='stylesheet' type='text/css' href='blank.css'>
 
 </head>
@@ -17,44 +18,11 @@
   <td style='vertical-align:top;'><!-- first column -->
 
 <%
-
- ## todo: move to pluto
- 
-class ItemList
-    
-  def initialize( items )
-    @items = items
-  end
-    
-  def each
-    last_published_at = Time.local( 1911, 1, 1 )
-    
-    @items.each do |item|
-    
-      if last_published_at.year   == item.published_at.year  &&
-         last_published_at.month  == item.published_at.month &&
-         last_published_at.day    == item.published_at.day 
-        new_date = false
-      else
-        new_date = true
-      end
-
-      ## todo/fix: add new_feed flag too
-
-      yield( item, new_date )
-      
-      last_published_at = item.published_at
-
-    end
-  end # method each
-    
-end # class ItemList
-
-   items = ItemList.new( Item.latest.limit(24) )
-   items.each do |item, new_date|
+   items = ItemCursor.new( Item.latest.limit(24) )
+   items.each do |item, new_date, new_feed|
 %>
 
-   
+
  <% if new_date %>
  <h3>
   <%= item.published_at.strftime('%A, %d. %B %Y') %>
@@ -65,20 +33,26 @@ end # class ItemList
 <div class='item'>
 
 <h4 class='feed_title'>
-  <a href='<%= item.feed.url %>'><%= item.feed.title %></a>
+  <%= link_to item.feed.title, item.feed.url %>
 </h4>
 
 <h2 class='item_title'>
- <a href='<%= item.url %>'><%= item.title %></a>
+  <%= link_to item.title, item.url %>
 </h2>
 
 <div class='item_content'>
 <!-- todo: use sanitize or simplify or whitelist
-   -- todo/fix: check why summary can be nil/null
+   - todo/fix: check why summary can be nil/null
  -->
-<%= item.summary ? textify( item.summary ) : '-/-' %>
+<% if item.summary? %>
+  <%= textify( item.summary ) %>
+<% elsif item.content? %>
+  <%= textify( item.content ) %>
+<% else %>
+  -/-
+<% end %>
 </div>
-</div> 
+</div>
 <!--
 <p>
    <%= item.published_at.strftime('%H:%M') %>
@@ -92,7 +66,7 @@ end # class ItemList
 
     <div class='colright'>
     <p>
-      Last Updated
+      Updated
     </p>
     <p class='smaller'><%= Time.now.strftime('%A, %d. %B %Y %H:%M') %>
     </p>
@@ -101,8 +75,9 @@ end # class ItemList
     <ul class='subscriptions smaller' >
      <% Feed.all.each do |feed| %>
       <li>
-        <a href='<%= feed.feed_url %>'><img src='feed-icon-10x10.png'></a>         
-        <a href='<%= feed.url %>'><%= feed.title %></a></li>
+        <%= link_to( image_tag('feed-icon-10x10.png'), feed.feed_url ) %>
+        <%= link_to feed.title, feed.url %>
+       </li>
      <% end %>
      </ul>
     </div>
