@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='UTF-8'>
+  <meta charset='utf-8'>
   <meta name='generator' content='<%= Pluto.generator %>'>
 
   <title><%= site.title %></title>
 
-  <%# stylesheet_link_tag 'blank' %>
-  <link rel='stylesheet' type='text/css' href='blank.css'>
-
+  <%= stylesheet_link_tag 'blank' %>
 </head>
 <body>
 <h1><%= site.title %></h1>
@@ -18,7 +16,7 @@
   <td style='vertical-align:top;'><!-- first column -->
 
 <%
-   items = ItemCursor.new( Item.latest.limit(24) )
+   items = ItemCursor.new( site.items.latest.limit(24) )
    items.each do |item, new_date, new_feed|
 %>
 
@@ -68,12 +66,13 @@
     <p>
       Updated
     </p>
-    <p class='smaller'><%= Time.now.strftime('%A, %d. %B %Y %H:%M') %>
+    <p class='smaller'>
+      <%= site.fetched_at.strftime('%A, %d. %B %Y %H:%M') if site.fetched_at %>
     </p>
 
     <p>Subscriptions</p>
     <ul class='subscriptions smaller' >
-     <% Feed.all.each do |feed| %>
+     <% site.feeds.each do |feed| %>
       <li>
         <%= link_to( image_tag('feed-icon-10x10.png'), feed.feed_url ) %>
         <%= link_to feed.title, feed.url %>

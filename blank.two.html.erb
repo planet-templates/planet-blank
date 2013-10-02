@@ -1,11 +1,10 @@
 <html>
   <head>
-   <meta charset='UTF-8'>
+   <meta charset='utf-8'>
    <meta name='generator' content='<%= Pluto.generator %>'>
    <title><%= site.title %></title>
 
-   <link rel='stylesheet' type='text/css' href='blank.two.css'>
-
+   <%= stylesheet_link_tag 'blank.two' %>
   </head>
   <body>
     
@@ -23,7 +22,7 @@
   </colgroup>
 <tr>
 
-<%  Item.latest.limit(24).in_columns(2).each do |items| %>
+<%  site.items.latest.limit(24).in_columns(2).each do |items| %>
 
 <td valign='top'>
   <!-- start new column -->
