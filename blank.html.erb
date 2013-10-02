@@ -16,8 +16,8 @@
   <td style='vertical-align:top;'><!-- first column -->
 
 <%
-   items = ItemCursor.new( site.items.latest.limit(24) )
-   items.each do |item, new_date, new_feed|
+   items = site.items.latest.limit(24)
+   ItemCursor.new( items ).each do |item, new_date, new_feed|
 %>
 
 
