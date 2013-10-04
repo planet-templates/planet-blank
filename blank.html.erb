@@ -23,7 +23,7 @@
 
  <% if new_date %>
  <h3>
-  <%= item.published_at.strftime('%A, %d. %B %Y') %>
+  <%= item.published.strftime('%A, %d. %B %Y') %>
  </h3>
  <% end %><!-- if new_date -->
 
@@ -67,7 +67,7 @@
       Updated
     </p>
     <p class='smaller'>
-      <%= site.fetched_at.strftime('%A, %d. %B %Y %H:%M') if site.fetched_at %>
+      <%= site.fetched.strftime('%A, %d. %B %Y %H:%M') if site.fetched %>
     </p>
 
     <p>Subscriptions</p>

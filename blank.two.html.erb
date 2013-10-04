@@ -10,7 +10,7 @@
     
 <h1>
   <%= site.title %>
-  Update: <%= site.fetched_at %>
+  Update: <%= site.fetched %>
 </h1>
 
 <!-- use a table w/ two colums -->
@@ -37,7 +37,7 @@
           <!-- fix/todo: show year if not current year
              e.g. use "%b %d, '%y"
           -->
-        <%= item.published_at.strftime("%b %d") %>
+        <%= item.published.strftime("%b %d") %>
       </span>
 </h3>
 
@@ -50,7 +50,7 @@
        
        <%= item.summary ? textify( item.summary ) : '-/-' %>
        
-       <span class='item-time-ago-in-words'><%= time_ago_in_words( item.published_at ) %></span>
+       <span class='item-time-ago-in-words'><%= time_ago_in_words( item.published ) %></span>
      </td>
     </tr>
 </table>
