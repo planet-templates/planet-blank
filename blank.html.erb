@@ -9,65 +9,17 @@
   <%= stylesheet_link_tag 'blank' %>
 </head>
 <body>
-<h1><%= site.title %></h1>
-
-<table>
-<tr>
-  <td style='vertical-align:top;'><!-- first column -->
-
-<%
-   items = site.items.latest.limit(24)
-   ItemCursor.new( items ).each do |item, new_date, new_feed|
-%>
 
 
- <% if new_date %>
- <h3>
-  <%= item.published.strftime('%A, %d. %B %Y') %>
- </h3>
- <% end %><!-- if new_date -->
-
-
-<div class='item'>
-
-<h4 class='feed_title'>
-  <%= link_to item.feed.title, item.feed.url %>
-</h4>
-
-<h2 class='item_title'>
-  <%= link_to item.title, item.url %>
-</h2>
-
-<div class='item_content'>
-<!-- todo: use sanitize or simplify or whitelist
-   - todo/fix: check why summary can be nil/null
- -->
-<% if item.summary? %>
-  <%= textify( item.summary ) %>
-<% elsif item.content? %>
-  <%= textify( item.content ) %>
-<% else %>
-  -/-
-<% end %>
-</div>
-</div>
-<!--
-<p>
-   <%= item.published_at.strftime('%H:%M') %>
-</p>
--->
-
-<% end %><!-- each item -->
-
-  </td>
-  <td style='vertical-align:top;'><!-- second column -->
-
-    <div class='colright'>
+<div id='navwrap'>
+<div id='nav'>
     <p>
-      Updated
+      Last Update
     </p>
     <p class='smaller'>
-      <%= site.fetched.strftime('%A, %d. %B %Y %H:%M') if site.fetched %>
+      <% if site.fetched %>
+        <%= site.fetched.strftime('%A, %d. %B %Y %H:%M') %>
+      <% end %>
     </p>
 
     <p>Subscriptions</p>
@@ -76,13 +28,70 @@
       <li>
         <%= link_to( image_tag('feed-icon-10x10.png'), feed.feed_url ) %>
         <%= link_to feed.title, feed.url %>
-       </li>
+      </li>
      <% end %>
      </ul>
-    </div>
+</div>
+</div>
 
-  </td>
-</tr>
-</table>
+
+<h1><%= site.title %></h1>
+
+
+<%
+   items = site.items.latest.limit(24)
+   ItemCursor.new( items ).each do |item, new_date, new_feed|
+%>
+
+
+<% if new_date %>
+ <h2 class='new_date'>
+  <%= item.published.strftime('%A, %d. %B %Y') %>
+ </h2>
+<% else %>
+  <hr class='item_seperator'>
+<% end %>
+
+<div class='item'>
+
+<% if new_feed %>
+<h4 class='feed_title'>
+  <%= link_to item.feed.title, item.feed.url %>
+</h4>
+<% end %>
+
+
+<h3 class='item_title'>
+  <%= link_to item.title, item.url %>
+</h2>
+
+
+<div class='item_content item_summary'>
+
+<!-- todo: use sanitize or simplify or whitelist
+   - todo/fix: check why summary can be nil/null
+ -->
+<% if item.summary %>
+  <%= textify( item.summary ) %>
+<% elsif item.content %>
+  <%= textify( item.content ) %>
+<% else %>
+  -/-
+<% end %>
+  
+</div>
+</div><!-- item -->
+
+
+
+<!--
+<p>
+   <%= item.published.strftime('%H:%M') %>
+</p>
+-->
+
+<% end %><!-- each item -->
+
+
 </body>
 </html>

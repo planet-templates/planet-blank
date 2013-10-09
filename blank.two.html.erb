@@ -10,10 +10,17 @@
     
 <h1>
   <%= site.title %>
-  Update: <%= site.fetched %>
+  <span class='smaller'>
+  Last Update:
+   <% if site.fetched %>
+    <%= site.fetched.strftime('%A, %d. %B %Y %H:%M') %>
+   <% end %>
+  </span>
 </h1>
 
+
 <!-- use a table w/ two colums -->
+
 
 <table>
   <colgroup>
@@ -31,30 +38,35 @@
 
 
 <div class='item'>
-<h3>
-  <%= link_to item.feed.title, item.feed.url %>
-      <span class='item-published'> - 
-          <!-- fix/todo: show year if not current year
-             e.g. use "%b %d, '%y"
-          -->
-        <%= item.published.strftime("%b %d") %>
-      </span>
-</h3>
 
-<table>
-   <tr>
-     <td valign='top'>
-       <span class='item-title'>
-          <%= link_to item.title, item.url %>
-       </span>
-       
-       <%= item.summary ? textify( item.summary ) : '-/-' %>
-       
-       <span class='item-time-ago-in-words'><%= time_ago_in_words( item.published ) %></span>
-     </td>
-    </tr>
-</table>
-</div>
+<h4>
+  <%= link_to item.feed.title, item.feed.url %>
+  <span class='item-published'>
+     - 
+      <!-- fix/todo: show year if not current year
+           e.g. use "%b %d, '%y"
+         -->
+     <%= item.published.strftime("%b %d") %>
+  </span>
+</h4>
+
+<h3>
+  <span class='item-title'>
+    <%= link_to item.title, item.url %>
+   </span>
+</h3>
+ 
+<div class='item-summary'>
+  <% if item.summary %>
+     <%= textify( item.summary ) %>
+  <% else %>
+     -/-
+  <% end %>
+ <span class='item-time-ago-in-words'>
+ <%= time_ago_in_words( item.published ) %>
+ </span>  
+</div><!-- item-summary -->
+</div><!-- item -->
 
 
   <% end %><!-- each item (inside column) -->
