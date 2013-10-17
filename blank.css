@@ -9,12 +9,12 @@ body {
 
 a, a:visited {
   text-decoration: none;
-  color: #1E68A6;
+  color: blue;   /* #1E68A6; */
 }
 
 a:hover {
   text-decoration: underline;
-  color: #1E68A6;
+  color: blue;  /*  #1E68A6;  */
   background-color: yellow;
 }
 
@@ -57,6 +57,7 @@ hr.item_seperator {
     /* margin-bottom:  12px; */
    }
    
+   
    .item_content h1 {
      font-size: 100%;
    }
@@ -72,11 +73,18 @@ hr.item_seperator {
 
    .item_content {
     font-size: 14px;
+    margin-top: 14px;
    }
    
    .item_title {
     margin-top: 0;
+    margin-bottom: 0;
     /* font-size: 16px; */
+   }
+   
+   .item_footer {
+     font-size: 12px;
+     color: grey; 
    }
    
    .feed_title {

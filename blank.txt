@@ -1,9 +1,15 @@
 # pakman manifest
 
-__file__.html      blank.html.erb
-__file__.two.html  blank.two.html.erb
+__file__.html        blank.html.erb
+__file__.cards.html  blank.cards.html.erb
 
 blank.css
-blank.two.css
+blank.cards.css
 
 feed-icon-10x10.png
+
+view-headlines.png
+view-standard.png
+
+jquery-2.0.3.min.js
+blank.js

@@ -7,6 +7,11 @@
   <title><%= site.title %></title>
 
   <%= stylesheet_link_tag 'blank' %>
+  
+  <!-- fix: use script_tag  rails-style ??? -->
+  <script src='jquery-2.0.3.min.js'></script>
+  <script src='blank.js'></script>
+
 </head>
 <body>
 
@@ -35,7 +40,18 @@
 </div>
 
 
-<h1><%= site.title %></h1>
+<h1>
+  <%= site.title %>
+</h1>
+
+
+<div style='text-align: right;'>
+  <img src='view-headlines.png' id='show-headlines' title='Show Headlines Only' width='24' height='24'>
+  <img src='view-standard.png' id='show-all'        title='Show Full Text' width='24' height='24'>
+
+  <!-- todo/fix: make sure name gets set for use in erb here; use name instead of site.key?? -->
+    Style | <a href='<%= site.key %>.cards.html'>Cards</a>  
+</div>
 
 
 <%
@@ -65,7 +81,7 @@
   <%= link_to item.title, item.url %>
 </h2>
 
-
+<div class='item_body'>
 <div class='item_content item_summary'>
 
 <!-- todo: use sanitize or simplify or whitelist
@@ -80,15 +96,17 @@
 <% end %>
   
 </div>
+
+<div class='item_footer'>
+   <%= item.published.strftime('%H:%M') %> / 
+   <%= time_ago_in_words( item.published ) %>
+</div>
+
+</div><!-- item-body -->
 </div><!-- item -->
 
 
 
-<!--
-<p>
-   <%= item.published.strftime('%H:%M') %>
-</p>
--->
 
 <% end %><!-- each item -->
 
