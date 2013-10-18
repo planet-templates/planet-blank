@@ -6,11 +6,12 @@
 
   <title><%= site.title %></title>
 
-  <%= stylesheet_link_tag 'blank' %>
-  
+  <%= stylesheet_link_tag 'css/font-awesome' %>
+  <%= stylesheet_link_tag 'css/blank' %>
+ 
   <!-- fix: use script_tag  rails-style ??? -->
-  <script src='jquery-2.0.3.min.js'></script>
-  <script src='blank.js'></script>
+  <script src='js/jquery-2.0.3.min.js'></script>
+  <script src='js/blank.js'></script>
 
 </head>
 <body>
@@ -31,7 +32,7 @@
     <ul class='subscriptions smaller' >
      <% site.feeds.each do |feed| %>
       <li>
-        <%= link_to( image_tag('feed-icon-10x10.png'), feed.feed_url ) %>
+        <%= link_to( image_tag('i/feed-icon-10x10.png'), feed.feed_url ) %>
         <%= link_to feed.title, feed.url %>
       </li>
      <% end %>
@@ -40,18 +41,28 @@
 </div>
 
 
-<h1>
-  <%= site.title %>
-</h1>
-
-
-<div style='text-align: right;'>
-  <img src='view-headlines.png' id='show-headlines' title='Show Headlines Only' width='24' height='24'>
-  <img src='view-standard.png' id='show-all'        title='Show Full Text' width='24' height='24'>
-
-  <!-- todo/fix: make sure name gets set for use in erb here; use name instead of site.key?? -->
-    Style | <a href='<%= site.key %>.cards.html'>Cards</a>  
-</div>
+ <table width='100%'>
+  <tr>
+   <td><!-- column 1 -->
+      <h1><%= site.title %></h1>
+   </td>
+   <td><!-- column 2 -->
+    <div class='views' style='display: inline-block; text-align: right;'>
+  <img src='i/view-headlines.png' id='show-headlines' title='Show Headlines Only' width='24' height='24'>
+  <img src='i/view-snippets.png' id='show-snippets'    title='Show Snippets' width='24' height='24'>
+  <img src='i/view-standard.png' id='show-fulltext'    title='Show Full Text' width='24' height='24'>
+     </div>
+   </td>
+  </tr>
+  <tr>
+   <td></td>
+   <td>
+     <div class='views' style='display: inline-block; text-align: right;'>
+       Style | <a href='<%= site.key %>.cards.html'>Cards</a>
+      </div>
+   </td>
+  </tr>
+ </table>
 
 
 <%
@@ -68,6 +79,11 @@
   <hr class='item_seperator'>
 <% end %>
 
+<!--
+   fix:
+    use article element/tag!!!
+    -->
+
 <div class='item'>
 
 <% if new_feed %>
@@ -78,19 +94,36 @@
 
 
 <h3 class='item_title'>
-  <%= link_to item.title, item.url %>
+ 
+ <i class='icon-caret-down item-collapse item-close item-opened'></i>
+ <i class='icon-caret-right item-expand item-open item-closed'></i>
+ <%= link_to item.title, item.url %>
 </h2>
 
 <div class='item_body'>
+
+<div class='item_snippet'>
+<!-- use 'smarter' algorithm for cutoff snippet text
+   note: summary goes first; than try content -->
+<% if item.summary %>
+  <%= textify( item.summary )[0..400] %>
+<% elsif item.content %>
+  <%= textify( item.content )[0..400] %>
+<% else %>
+  -/-
+<% end %>
+</div>
+
 <div class='item_content item_summary'>
 
 <!-- todo: use sanitize or simplify or whitelist
    - todo/fix: check why summary can be nil/null
+   note: content goes first; than try summary
  -->
-<% if item.summary %>
-  <%= textify( item.summary ) %>
-<% elsif item.content %>
+<% if item.content %>
   <%= textify( item.content ) %>
+<% elsif item.summary %>
+  <%= textify( item.summary ) %>
 <% else %>
   -/-
 <% end %>
@@ -98,7 +131,7 @@
 </div>
 
 <div class='item_footer'>
-   <%= item.published.strftime('%H:%M') %> / 
+   <%= item.published.strftime('%H:%M') %> &bull;
    <%= time_ago_in_words( item.published ) %>
 </div>
 

@@ -1,5 +1,5 @@
 
-/* fix: use sass w/ variables */
+/* fix: use sass/scss w/ variables */
 
 body {
   font-family: sans-serif;
@@ -24,6 +24,47 @@ hr.item_seperator {
      color: #ccc;
      height: 1px;
 }
+
+
+
+#show-headlines,
+#show-snippets,
+#show-fulltext
+{
+  cursor: pointer;
+}
+
+.item-collapse,
+.item-close,
+.item-opened {
+  color: grey;
+  cursor: pointer;
+}
+
+.item-expand,
+.item-open,
+.item-closed {
+  cursor: pointer;
+  display: none;   /* hide on startup  */
+}
+
+.views {
+     font-size: 12px;
+     color: grey;
+}
+
+.views a,
+.views a:visited {
+  text-decoration: none;
+  color: grey; 
+}
+
+.views a:hover {
+  text-decoration: underline;
+  color: grey;
+  background-color: yellow;
+}
+
 
 
 #navwrap {
@@ -58,22 +99,32 @@ hr.item_seperator {
    }
    
    
-   .item_content h1 {
+   .item_content h1,
+   .item_snippet h1 {
      font-size: 100%;
    }
-   .item_content h2 {
+   .item_content h2,
+   .item_snippet h2 {
      font-size: 100%;
    }
-   .item_content h3 {
+   .item_content h3,
+   .item_snippet h3 {
      font-size: 100%;
    }
-   .item_content h4 {
+   .item_content h4,
+   .item_snippet h4 {
      font-size: 100%;
    }
 
-   .item_content {
+   .item_content,
+   .item_summary,
+   .item_snippet {
     font-size: 14px;
     margin-top: 14px;
+   }
+   
+   .item_snippet {
+    display: none;  /* hide on startup  */
    }
    
    .item_title {
