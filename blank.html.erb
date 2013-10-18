@@ -37,32 +37,35 @@
       </li>
      <% end %>
      </ul>
+
+    <p>Planetarium</p>
+    <ul class='planetarium smaller'>
+      <li><a href='http://plutolive.herokuapp.com'>Planet Ruby</a></li>
+      <li><a href='http://viennarb.herokuapp.com'>Planet vienna.rb</a></li>
+    </ul>
+
+    <p>Meta</p>
+    <p class='smaller'>Powered by <a href=''>Pluto</a>; 
+       Questions? Comments?
+      Send them along to the <a href=''>forum/mailing list</a>. Thanks!
+    </p>
 </div>
 </div>
 
 
- <table width='100%'>
-  <tr>
-   <td><!-- column 1 -->
-      <h1><%= site.title %></h1>
-   </td>
-   <td><!-- column 2 -->
-    <div class='views' style='display: inline-block; text-align: right;'>
-  <img src='i/view-headlines.png' id='show-headlines' title='Show Headlines Only' width='24' height='24'>
-  <img src='i/view-snippets.png' id='show-snippets'    title='Show Snippets' width='24' height='24'>
-  <img src='i/view-standard.png' id='show-fulltext'    title='Show Full Text' width='24' height='24'>
-     </div>
-   </td>
-  </tr>
-  <tr>
-   <td></td>
-   <td>
-     <div class='views' style='display: inline-block; text-align: right;'>
-       Style | <a href='<%= site.key %>.cards.html'>Cards</a>
-      </div>
-   </td>
-  </tr>
- </table>
+<div id='opts'>
+  <div style='width: 100%; text-align: right;'>
+   <img src='i/view-headlines.png' id='show-headlines' title='Show Headlines Only' width='24' height='24'>
+   <img src='i/view-snippets.png' id='show-snippets'    title='Show Snippets' width='24' height='24'>
+   <img src='i/view-standard.png' id='show-fulltext'    title='Show Full Text' width='24' height='24'>
+  </div>
+  <div style='width: 100%; text-align: right;'>
+    Style | <%= link_to 'Cards', "#{site.key}.cards.html" %>
+  </div>
+</div>  
+
+
+<h1><%= site.title %></h1>
 
 
 <%

@@ -48,18 +48,18 @@ hr.item_seperator {
   display: none;   /* hide on startup  */
 }
 
-.views {
+#opts {
      font-size: 12px;
      color: grey;
 }
 
-.views a,
-.views a:visited {
+#opts a,
+#opts a:visited {
   text-decoration: none;
   color: grey; 
 }
 
-.views a:hover {
+#opts a:hover {
   text-decoration: underline;
   color: grey;
   background-color: yellow;
@@ -80,6 +80,15 @@ hr.item_seperator {
   border: 1px solid #bbb;
   background-color: #eee;
 }
+
+
+#opts {
+  float: right;
+  width: 200px;
+  background-color: white;
+  padding-left: 12px;
+}
+
 
 .new_date {
       /* text-align: center; */
@@ -145,10 +154,17 @@ hr.item_seperator {
 
 
 ul.subscriptions {
-  list-style: none;
+  list-style-type: none;
   margin-left: 0;
   padding-left: 0;
 }
+
+ul.planetarium {
+  list-style-type: square;
+/*  margin-left: 0;
+  padding-left: 0;  */
+}
+
 
 /* fix: use .small instead */
 .smaller {
