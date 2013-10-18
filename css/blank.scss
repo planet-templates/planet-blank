@@ -6,7 +6,6 @@ $primary-color:   #333;          // title, etc.
 $secondary-color: grey;
 
 $link-color: blue;
-$link-hover-background-color: yellow;
 
 $small-font-size: 12px;
 
@@ -24,7 +23,6 @@ a {
 
   &:hover {
     text-decoration: underline;
-    background-color: $link-hover-background-color;
   }
 }
 
@@ -78,7 +76,6 @@ a {
 
     &:hover {
       text-decoration:  underline;
-      background-color: $link-hover-background-color;
     }
   }
 

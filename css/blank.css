@@ -6,8 +6,7 @@ a {
   text-decoration: none;
   color: blue; }
   a:hover {
-    text-decoration: underline;
-    background-color: yellow; }
+    text-decoration: underline; }
 
 .small {
   font-size: 12px; }
@@ -43,8 +42,7 @@ a {
     text-decoration: none;
     color: grey; }
     #opts a:hover {
-      text-decoration: underline;
-      background-color: yellow; }
+      text-decoration: underline; }
   #opts #show-headlines,
   #opts #show-snippets,
   #opts #show-fulltext {

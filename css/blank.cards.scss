@@ -31,6 +31,42 @@ a {
 
 
 
+.small {
+  font-size: $small-font-size;
+  color: $secondary-color;
+  // color: #666666;  -- lighter gray than text gray
+}
+
+
+
+#opts {
+  float: right;
+  width: 200px;
+  // background-color: white;
+  padding-left: 12px;
+
+  font-size: $small-font-size;
+  color:     $secondary-color;
+
+  a {
+    text-decoration: none;
+    color:           $secondary-color; 
+
+    &:hover {
+      text-decoration:  underline;
+      // background-color: $link-hover-background-color;
+    }
+  }
+
+  #show-headlines,
+  #show-snippets,
+  #show-fulltext  {
+    cursor: pointer;
+  }
+}
+
+
+
 .item {
   h4.feed-title {
     margin-top: 4px;
@@ -41,6 +77,11 @@ a {
     margin-top: 4px;
     margin-bottom: 4px;
   }
+  
+  .item-summary,
+  .item-content {
+    display: none;  // hide on startup
+   }
 }
 
 
@@ -67,12 +108,18 @@ a {
     font-size: $small-font-size;
     color:     $secondary-color;
   }
-}
+  
+  .item-collapse,
+  .item-close,
+  .item-opened {
+    color: grey;
+    cursor: pointer;
+  }
 
-
-
-.small {
-  font-size: $small-font-size;
-  color: $secondary-color;
-  // color: #666666;  -- lighter gray than text gray
+  .item-expand,
+  .item-open,
+  .item-closed {
+    cursor: pointer;
+    display: none;   // hide on startup
+  }  
 }

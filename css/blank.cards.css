@@ -10,12 +10,35 @@ a {
     text-decoration: underline;
     color: blue; }
 
+.small {
+  font-size: 12px;
+  color: grey; }
+
+#opts {
+  float: right;
+  width: 200px;
+  padding-left: 12px;
+  font-size: 12px;
+  color: grey; }
+  #opts a {
+    text-decoration: none;
+    color: grey; }
+    #opts a:hover {
+      text-decoration: underline; }
+  #opts #show-headlines,
+  #opts #show-snippets,
+  #opts #show-fulltext {
+    cursor: pointer; }
+
 .item h4.feed-title {
   margin-top: 4px;
   margin-bottom: 4px; }
 .item h3.item-title {
   margin-top: 4px;
   margin-bottom: 4px; }
+.item .item-summary,
+.item .item-content {
+  display: none; }
 
 .item {
   background-color: white;
@@ -31,7 +54,13 @@ a {
   .item .item-time-ago-in-words {
     font-size: 12px;
     color: grey; }
-
-.small {
-  font-size: 12px;
-  color: grey; }
+  .item .item-collapse,
+  .item .item-close,
+  .item .item-opened {
+    color: grey;
+    cursor: pointer; }
+  .item .item-expand,
+  .item .item-open,
+  .item .item-closed {
+    cursor: pointer;
+    display: none; }
