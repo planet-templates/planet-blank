@@ -1,0 +1,160 @@
+// use  sass blank.scss blank.css
+//  or  sass --watch blank.scss:blank.css
+
+
+$primary-color:   #333;          // title, etc.
+$secondary-color: grey;
+
+$link-color: blue;
+$link-hover-background-color: yellow;
+
+$small-font-size: 12px;
+
+
+
+body {
+  font-family: sans-serif;
+  color: $primary-color;
+}
+
+
+a {
+  text-decoration: none;
+  color: $link-color;
+
+  &:hover {
+    text-decoration: underline;
+    background-color: $link-hover-background-color;
+  }
+}
+
+
+.small {
+  font-size: $small-font-size;
+}
+
+
+
+#navwrap {
+  float: right;
+  background-color: white;
+  padding-left: 12px;
+  padding-bottom: 24px;
+}
+
+
+#nav {
+  width: 180px;
+  padding: 4px;
+  border: 1px solid #bbb;
+  background-color: #eee;
+
+  ul.subscriptions {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  ul.planetarium {
+    list-style-type: square;
+    /*  margin-left: 0;
+        padding-left: 0;  */
+  } 
+}
+
+
+#opts {
+  float: right;
+  width: 200px;
+  background-color: white;
+  padding-left: 12px;
+
+  font-size: $small-font-size;
+  color:     $secondary-color;
+
+  a {
+    text-decoration: none;
+    color:           $secondary-color; 
+
+    &:hover {
+      text-decoration:  underline;
+      background-color: $link-hover-background-color;
+    }
+  }
+
+  #show-headlines,
+  #show-snippets,
+  #show-fulltext  {
+    cursor: pointer;
+  }
+}
+
+
+
+.new-date {
+      // text-align: center; */
+      border-bottom: 1px solid #9e9e9e;
+      border-top: 1px solid #9e9e9e;
+      padding-top: 3px;
+      padding-bottom: 3px;
+}
+
+hr.item-seperator {
+     border: none;
+     background-color: #ccc;
+     color: #ccc;
+     height: 1px;
+}
+
+
+
+.item {
+    padding: 0px 5px 5px 5px;  // top, right, bottom, left
+    // margin-bottom:  12px;
+    
+   .item-content,
+   .item-summary,
+   .item-snippet {
+
+     font-size: 14px;
+     margin-top: 14px;
+
+     h1, h2, h3, h4 {
+       font-size: 100%;
+     }
+   }
+
+   .item-snippet {
+    display: none;  // hide on startup
+   }
+   
+   .item-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    // font-size: 16px;
+   }
+
+   .item-footer {
+     font-size: $small-font-size;
+     color: $secondary-color;
+   }
+   
+   .feed-title {
+     margin-bottom: 5px;
+     font-size: $small-font-size;
+   }
+   
+  .item-collapse,
+  .item-close,
+  .item-opened {
+    color: grey;
+    cursor: pointer;
+  }
+
+  .item-expand,
+  .item-open,
+  .item-closed {
+    cursor: pointer;
+    display: none;   // hide on startup
+  }
+}

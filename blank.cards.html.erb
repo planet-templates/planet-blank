@@ -11,7 +11,7 @@
 
 <h1>
   <%= site.title %>
-  <span class='smaller'>
+  <span class='small'>
   Last Update:
    <% if site.fetched %>
     <%= site.fetched.strftime('%A, %d. %B %Y %H:%M') %>
@@ -40,8 +40,10 @@
 
 <div class='item'>
 
-<h4>
-  <%= link_to item.feed.title, item.feed.url %>
+<h4 class='feed-title'>
+  <span class='feed-title'>
+    <%= link_to item.feed.title, item.feed.url %>
+  </span>
   <span class='item-published'>
      - 
       <!-- fix/todo: show year if not current year
@@ -51,7 +53,8 @@
   </span>
 </h4>
 
-<h3>
+
+<h3 class='item-title'>
   <span class='item-title'>
     <%= link_to item.title, item.url %>
    </span>

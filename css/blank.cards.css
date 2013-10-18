@@ -1,65 +1,37 @@
-
-
 body {
   font-family: sans-serif;
-  background-color: #F4F4F4;
-  color: #333333;
-}  
+  background-color: #f4f4f4;
+  color: #333333; }
 
-a, a:visited {
+a {
   text-decoration: none;
-  color: #333333;
-}
+  color: #333333; }
+  a:hover {
+    text-decoration: underline;
+    color: blue; }
 
-a:hover {
-  text-decoration: underline;
-  color: blue;
-  /* color: #333333; */
-  /* background-color: yellow; */
-}
-
-
-.item h4 {
-  /* assumes feed-title */
+.item h4.feed-title {
   margin-top: 4px;
-  margin-bottom: 4px;
-}
-
-.item h3 {
-  /* assumes item-title */
+  margin-bottom: 4px; }
+.item h3.item-title {
   margin-top: 4px;
-  margin-bottom: 4px;
-}
+  margin-bottom: 4px; }
 
 .item {
   background-color: white;
   /* todo: use box shadow instead of border */
   /* border: 1px solid grey; */
-  padding: 10px 15px 10px 15px; /* top right bottom left */
-  margin-bottom:  24px;
-  margin-right:   24px;
-}
+  padding: 10px 15px 10px 15px;
+  /* top right bottom left */
+  margin-bottom: 24px;
+  margin-right: 24px; }
+  .item .item-published {
+    font-size: 12px;
+    color: grey; }
+  .item .item-time-ago-in-words {
+    font-size: 12px;
+    color: grey; }
 
-.item-title    {
- /* nothing for now */
-}
-  
-.item-published
-{
-  /* white-space: nowrap; */
+.small {
   font-size: 12px;
-  color: grey;
-}
-
-.item-time-ago-in-words {
-  font-size: 12px;
-  color: grey;
-}
-
-
-/* fix: use .small instead */
-.smaller {
-  font-size: 12px;
-  color: grey;
-  /* color: #666666; */ /* lighter gray than text gray */
-}
+  color: grey; }

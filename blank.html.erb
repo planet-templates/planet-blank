@@ -8,10 +8,13 @@
 
   <%= stylesheet_link_tag 'css/font-awesome' %>
   <%= stylesheet_link_tag 'css/blank' %>
- 
+
   <!-- fix: use script_tag  rails-style ??? -->
   <script src='js/jquery-2.0.3.min.js'></script>
   <script src='js/blank.js'></script>
+
+  <%# = javascript_include_tag 'js/jquery-2.0.3.min.js' %>
+  <%# = javascript_include_tag 'js/blank.js' %>
 
 </head>
 <body>
@@ -22,14 +25,14 @@
     <p>
       Last Update
     </p>
-    <p class='smaller'>
+    <p class='small'>
       <% if site.fetched %>
         <%= site.fetched.strftime('%A, %d. %B %Y %H:%M') %>
       <% end %>
     </p>
 
     <p>Subscriptions</p>
-    <ul class='subscriptions smaller' >
+    <ul class='subscriptions small' >
      <% site.feeds.each do |feed| %>
       <li>
         <%= link_to( image_tag('i/feed-icon-10x10.png'), feed.feed_url ) %>
@@ -39,15 +42,15 @@
      </ul>
 
     <p>Planetarium</p>
-    <ul class='planetarium smaller'>
+    <ul class='planetarium small'>
       <li><a href='http://plutolive.herokuapp.com'>Planet Ruby</a></li>
       <li><a href='http://viennarb.herokuapp.com'>Planet vienna.rb</a></li>
     </ul>
 
     <p>Meta</p>
-    <p class='smaller'>Powered by <a href=''>Pluto</a>; 
+    <p class='small'>Powered by <a href='https://github.com/feedreader'>Pluto</a>; 
        Questions? Comments?
-      Send them along to the <a href=''>forum/mailing list</a>. Thanks!
+      Send them along to the <a href='http://groups.google.com/group/feedreader'>forum/mailing list</a>. Thanks!
     </p>
 </div>
 </div>
@@ -75,37 +78,33 @@
 
 
 <% if new_date %>
- <h2 class='new_date'>
+ <h2 class='new-date'>
   <%= item.published.strftime('%A, %d. %B %Y') %>
  </h2>
 <% else %>
-  <hr class='item_seperator'>
+  <hr class='item-seperator'>
 <% end %>
 
-<!--
-   fix:
-    use article element/tag!!!
-    -->
 
-<div class='item'>
+<article class='item'>
 
 <% if new_feed %>
-<h4 class='feed_title'>
+<h4 class='feed-title'>
   <%= link_to item.feed.title, item.feed.url %>
 </h4>
 <% end %>
 
 
-<h3 class='item_title'>
+<h3 class='item-title'>
  
  <i class='icon-caret-down item-collapse item-close item-opened'></i>
  <i class='icon-caret-right item-expand item-open item-closed'></i>
  <%= link_to item.title, item.url %>
 </h2>
 
-<div class='item_body'>
+<div class='item-body'>
 
-<div class='item_snippet'>
+<div class='item-snippet'>
 <!-- use 'smarter' algorithm for cutoff snippet text
    note: summary goes first; than try content -->
 <% if item.summary %>
@@ -117,7 +116,7 @@
 <% end %>
 </div>
 
-<div class='item_content item_summary'>
+<div class='item-content item-summary'>
 
 <!-- todo: use sanitize or simplify or whitelist
    - todo/fix: check why summary can be nil/null
@@ -133,13 +132,14 @@
   
 </div>
 
-<div class='item_footer'>
+<div class='item-footer'>
    <%= item.published.strftime('%H:%M') %> &bull;
    <%= time_ago_in_words( item.published ) %>
 </div>
 
 </div><!-- item-body -->
-</div><!-- item -->
+
+</article><!-- item -->
 
 
 

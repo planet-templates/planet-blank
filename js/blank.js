@@ -1,5 +1,3 @@
-
-
 ////////////
 // todo/fix:
 //   add hotkey shortcuts  for
@@ -9,7 +7,6 @@
 function showHeadlines()
 {
     // console.log( 'showHeadlines' );
-    // $( '.item_content,.item_summary,.item-content,.item-summary,.item-body,.item_body').hide();
     $( '.item' ).each( function() {
         closeItem( $(this) );
     });
@@ -17,7 +14,6 @@ function showHeadlines()
 
 function showFullText() {
   // console.log( 'showFullText' );
-  //$( '.item_content,.item_summary,.item-content,.item-summary,.item-body,.item_body').show();
     $( '.item' ).each( function() {
         openItem( $(this) );
         hideItemSnippet( $(this) );
@@ -25,8 +21,6 @@ function showFullText() {
 }
 
 function showSnippets() {
-  // console.log( 'showFullText' );
-  //$( '.item_content,.item_summary,.item-content,.item-summary,.item-body,.item_body').show();
     $( '.item' ).each( function() {
         openItem( $(this) );
         showItemSnippet( $(this) );
@@ -52,27 +46,27 @@ function onOpenItem() {
 
 function showItemSnippet( $item ) // alias - hideItemFullText
 {
-  $item.find( '.item_summary,.item_content' ).hide();
-  $item.find( '.item_snippet' ).show();
+  $item.find( '.item-summary,.item-content' ).hide();
+  $item.find( '.item-snippet' ).show();
 }
 
 function hideItemSnippet( $item )  // alias - showItemFullText
 {
-  $item.find( '.item_summary,.item_content' ).show();
-  $item.find( '.item_snippet' ).hide();
+  $item.find( '.item-summary,.item-content' ).show();
+  $item.find( '.item-snippet' ).hide();
 }
 
 
 function closeItem( $item ) {
-  $item.find( '.item_body' ).hide();
+  $item.find( '.item-body' ).hide();
 
   $item.find( '.item-close' ).hide();
   $item.find( '.item-open' ).show();
 }
 
 function openItem( $item ) {
-  $item.find( '.item_body' ).show();
-  
+  $item.find( '.item-body' ).show();
+
   $item.find( '.item-close' ).show();
   $item.find( '.item-open' ).hide();
 }
