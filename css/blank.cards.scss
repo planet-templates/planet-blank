@@ -84,6 +84,9 @@ a {
    
    .item-snippet {
      /* fix/todo: move to scss partial for reuse eg. _snippet.scss or similar */
+    h1, h2, h3, h4, h5, h6 {
+       font-size: 100%;
+     }
      b, h1, h2, h3, h4, h5, h6 {
        font-weight: normal;
      }

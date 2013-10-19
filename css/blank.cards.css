@@ -41,6 +41,8 @@ a {
   display: none; }
 .item .item-snippet {
   /* fix/todo: move to scss partial for reuse eg. _snippet.scss or similar */ }
+  .item .item-snippet h1, .item .item-snippet h2, .item .item-snippet h3, .item .item-snippet h4, .item .item-snippet h5, .item .item-snippet h6 {
+    font-size: 100%; }
   .item .item-snippet b, .item .item-snippet h1, .item .item-snippet h2, .item .item-snippet h3, .item .item-snippet h4, .item .item-snippet h5, .item .item-snippet h6 {
     font-weight: normal; }
   .item .item-snippet p, .item .item-snippet ul, .item .item-snippet ol, .item .item-snippet h1, .item .item-snippet h2, .item .item-snippet h3, .item .item-snippet h4, .item .item-snippet h5, .item .item-snippet h6 {
