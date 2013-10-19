@@ -5,7 +5,9 @@
 $primary-color:   #333;          // title, etc.
 $secondary-color: grey;
 
-$link-color: blue;
+$link-color:          #8b0000;  // darkred; see wikipedia web colors
+$link-visited-color:  #b22222;  // firebrick (red); see wikipedia web colors
+
 
 $small-font-size: 12px;
 
@@ -20,6 +22,10 @@ body {
 a {
   text-decoration: none;
   color: $link-color;
+
+  &:visited {
+    color: $link-visited-color;
+  }
 
   &:hover {
     text-decoration: underline;
@@ -116,13 +122,26 @@ hr.item-seperator {
      font-size: 14px;
      margin-top: 14px;
 
-     h1, h2, h3, h4 {
+     h1, h2, h3, h4, h5, h6 {
        font-size: 100%;
      }
    }
 
    .item-snippet {
     display: none;  // hide on startup
+    
+     /* fix/todo: move to scss partial for reuse eg. _snippet.scss or similar */
+     b, h1, h2, h3, h4, h5, h6 {
+       font-weight: normal;
+     }
+     p, ul, ol, h1, h2, h3, h4, h5, h6 {
+        margin: 2px 0px 2px 0px;  // top right bottom left
+     }
+     p, h1, h2, h3, h4, h5, h6 {
+        padding: 0;
+        // note: exclude ul,ol, that is, lists
+     }
+     
    }
    
    .item-title {

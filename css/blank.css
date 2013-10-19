@@ -4,7 +4,9 @@ body {
 
 a {
   text-decoration: none;
-  color: blue; }
+  color: darkred; }
+  a:visited {
+    color: firebrick; }
   a:hover {
     text-decoration: underline; }
 
@@ -67,18 +69,29 @@ hr.item-seperator {
   .item .item-snippet {
     font-size: 14px;
     margin-top: 14px; }
-    .item .item-content h1, .item .item-content h2, .item .item-content h3, .item .item-content h4,
+    .item .item-content h1, .item .item-content h2, .item .item-content h3, .item .item-content h4, .item .item-content h5, .item .item-content h6,
     .item .item-summary h1,
     .item .item-summary h2,
     .item .item-summary h3,
     .item .item-summary h4,
+    .item .item-summary h5,
+    .item .item-summary h6,
     .item .item-snippet h1,
     .item .item-snippet h2,
     .item .item-snippet h3,
-    .item .item-snippet h4 {
+    .item .item-snippet h4,
+    .item .item-snippet h5,
+    .item .item-snippet h6 {
       font-size: 100%; }
   .item .item-snippet {
-    display: none; }
+    display: none;
+    /* fix/todo: move to scss partial for reuse eg. _snippet.scss or similar */ }
+    .item .item-snippet b, .item .item-snippet h1, .item .item-snippet h2, .item .item-snippet h3, .item .item-snippet h4, .item .item-snippet h5, .item .item-snippet h6 {
+      font-weight: normal; }
+    .item .item-snippet p, .item .item-snippet ul, .item .item-snippet ol, .item .item-snippet h1, .item .item-snippet h2, .item .item-snippet h3, .item .item-snippet h4, .item .item-snippet h5, .item .item-snippet h6 {
+      margin: 2px 0px 2px 0px; }
+    .item .item-snippet p, .item .item-snippet h1, .item .item-snippet h2, .item .item-snippet h3, .item .item-snippet h4, .item .item-snippet h5, .item .item-snippet h6 {
+      padding: 0; }
   .item .item-title {
     margin-top: 0;
     margin-bottom: 0; }

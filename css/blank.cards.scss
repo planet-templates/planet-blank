@@ -6,8 +6,8 @@ $primary-color:   #333;          // title, etc.
 $secondary-color: grey;
 $background-color:  #f4f4f4;
 
-$link-color: blue;
-$link-hover-background-color: yellow;
+
+$link-color:          #8b0000;  // darkred; see wikipedia web colors
 
 $small-font-size: 12px;
 
@@ -25,7 +25,7 @@ a {
 
   &:hover {
     text-decoration: underline;
-    color: blue;
+    color: $link-color;
   }
 }
 
@@ -54,7 +54,6 @@ a {
 
     &:hover {
       text-decoration:  underline;
-      // background-color: $link-hover-background-color;
     }
   }
 
@@ -81,6 +80,20 @@ a {
   .item-summary,
   .item-content {
     display: none;  // hide on startup
+   }
+   
+   .item-snippet {
+     /* fix/todo: move to scss partial for reuse eg. _snippet.scss or similar */
+     b, h1, h2, h3, h4, h5, h6 {
+       font-weight: normal;
+     }
+     p, ul, ol, h1, h2, h3, h4, h5, h6 {
+        margin: 2px 0px 2px 0px;  // top right bottom left
+     }
+     p, h1, h2, h3, h4, h5, h6 {
+        padding: 0;
+        // note: exclude ul,ol, that is, lists
+     }
    }
 }
 
