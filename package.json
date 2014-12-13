@@ -1,0 +1,21 @@
+{
+  "name": "planet-blank",
+  "version": "0.1.0",
+  "description": "blank - planet template pack",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/planet-templates/planet-blank.git"
+  },
+  "keywords": [
+    "planet",
+    "pluto",
+    "blank",
+    "planet-templates"
+  ],
+  "author": "Gerald Bauer",
+  "license": "Public Domain",
+  "bugs": {
+    "url": "https://github.com/planet-templates/planet-blank/issues"
+  },
+  "homepage": "https://github.com/planet-templates/planet-blank"
+}
