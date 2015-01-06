@@ -7,7 +7,14 @@ web feeds. More [Pluto Project Site »](http://feedreader.github.io)
 
 ## Screenshot - Preview
 
+### Standard
+
 ![](screenshot.png)
+
+### Cards
+
+![](screenshot-cards.png)
+
 
 ## Usage
 
