@@ -81,7 +81,7 @@
 
 <% if new_date %>
  <h2 class='new-date'>
-  <%= item.published.strftime('%A, %d. %B %Y') %>
+  <%= item.updated.strftime('%A, %d. %B %Y') %>
  </h2>
 <% else %>
   <hr class='item-seperator'>
@@ -135,8 +135,14 @@
 </div>
 
 <div class='item-footer'>
+   Published
    <%= item.published.strftime('%H:%M') %> &bull;
    <%= time_ago_in_words( item.published ) %>
+<% if item.updated != item.published %>
+   &vert; Updated
+   <%= item.updated.strftime('%A, %d. %B %Y %H:%M') %> &bull;
+   <%= time_ago_in_words( item.updated ) %>
+<% end %>
 </div>
 
 </div><!-- item-body -->
