@@ -26,9 +26,7 @@
       Last Update
     </p>
     <p class='small'>
-      <% if site.fetched %>
-        <%= site.fetched.strftime('%A, %d. %B %Y %H:%M') %>
-      <% end %>
+      <%= Time.new.strftime('%A, %d. %B %Y %H:%M') %>
     </p>
 
     <p>Subscriptions</p>
@@ -102,7 +100,7 @@
  <i class='icon-caret-down item-collapse item-close item-opened'></i>
  <i class='icon-caret-right item-expand item-open item-closed'></i>
  <%= link_to item.title, item.url %>
-</h2>
+</h3>
 
 <div class='item-body'>
 
