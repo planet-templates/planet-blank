@@ -110,9 +110,9 @@
 <!-- use 'smarter' algorithm for cutoff snippet text
    note: summary goes first; than try content -->
 <% if item.summary %>
-  <%= textify( item.summary )[0..400] %>
+  <%= whitelist( item.summary, [] )[0..400] %>
 <% elsif item.content %>
-  <%= textify( item.content )[0..400] %>
+  <%= whitelist( item.content, [] )[0..400] %>
 <% else %>
   -/-
 <% end %>

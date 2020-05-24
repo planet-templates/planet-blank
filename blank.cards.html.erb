@@ -36,8 +36,8 @@
   <%= site.title %>
   <span class='small'>
   Last Update:
-   <% if site.fetched %>
-    <%= site.fetched.strftime('%A, %d. %B %Y %H:%M') %>
+   <% if site.updated %>
+    <%= site.updated.strftime('%A, %d. %B %Y %H:%M') %>
    <% end %>
   </span>
 </h1>
