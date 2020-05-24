@@ -26,7 +26,9 @@
       Last Update
     </p>
     <p class='small'>
-      <%= Time.new.strftime('%A, %d. %B %Y %H:%M') %>
+      <% if site.updated %>
+        <%= site.updated.strftime('%A, %d. %B %Y %H:%M') %>
+      <% end %>
     </p>
 
     <p>Subscriptions</p>
